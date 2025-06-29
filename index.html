@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Should I Watch?</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showPage('home')"><i class="fas fa-film"></i> WhatToWatch</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('quiz')"><i class="fas fa-question-circle"></i> Find My Mood</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('dashboard')"><i class="fas fa-th-large"></i> My Recommendations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('saved')"><i class="fas fa-heart"></i> Saved List</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main id="home-page" class="page-container active" aria-label="Homepage">
+        <div class="cohesive-hero-wrap">
+            <section class="hero-section">
+                <div class="container hero-content">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-12 col-md-10 col-lg-8 text-center">
+                            <h1>Find the Perfect Movie or Series for Your Mood</h1>
+                            <p class="lead">
+                                No more endless scrolling. Let us match you with the best picks based on how you feel right now!
+                            </p>
+                            <a href="#" class="btn-start mt-3" onclick="showPage('quiz')"><i class="fas fa-magic"></i> Start the Mood Quiz</a>
+                            <div class="how-works mt-5 d-none d-md-block">
+                                <h5 class="mb-3">How it works:</h5>
+                                <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+                                    <div class="step-box"><span class="step-num">1</span> <span class="step-icon"><i class="fas fa-user-astronaut"></i></span><span>Take the Mood Quiz</span></div>
+                                    <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                    <div class="step-box"><span class="step-num">2</span> <span class="step-icon"><i class="fas fa-magic"></i></span><span>Get Personalized Picks</span></div>
+                                    <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                    <div class="step-box"><span class="step-num">3</span> <span class="step-icon"><i class="fas fa-heart"></i></span><span>Save & Enjoy Watching!</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="trending-section py-3" aria-label="Trending Now">
+            <div class="container">
+                <h2 class="text-center mb-4 trending-title"><i class="fas fa-fire"></i> Trending Now</h2>
+                <div id="trendingCarouselContainer" class="trending-carousel-container shadow">
+                    <div class="carousel-inner" id="trendingCarouselInner"></div>
+                </div>
+            </div>
+        </section>
+        <section class="fun-section py-5" aria-label="Fun Images and Quotes">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-4 text-center">
+                        <img src="assets/popcorn.png" alt="Popcorn" class="fun-img img-fluid mb-3">
+                        <p class="fun-quote">“To watch a movie is to step into a new world.”</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="assets/reel.png" alt="Film reel" class="fun-img img-fluid mb-3">
+                        <p class="fun-quote">“One good movie can change your mood.”</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="assets/tv.png" alt="TV" class="fun-img img-fluid mb-3">
+                        <p class="fun-quote">“Series: Because two hours isn’t always enough!”</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <main id="quiz-page" class="page-container" aria-label="Quiz">
+        <section class="quiz-container">
+            <div class="container">
+                <div class="quiz-header text-center mb-4">
+                    <h1 class="quiz-title">Find Your Perfect Watch</h1>
+                    <p class="quiz-subtitle">Answer a few quick questions to discover what matches your mood</p>
+                    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                    <span class="progress-text" id="progressText">Question 1 of 6</span>
+                </div>
+                <div class="quiz-cards-list">
+                    <!-- Q1 -->
+                    <div class="question-card box active" id="question1">
+                        <h4 class="question-title">How's your energy level right now?</h4>
+                        <div class="options-grid">
+                            <div class="option-card box" data-value="low" data-mood="chill"><div class="option-emoji">😴</div><span>Low & Chill</span></div>
+                            <div class="option-card box" data-value="medium" data-mood="balanced"><div class="option-emoji">😊</div><span>Balanced</span></div>
+                            <div class="option-card box" data-value="high" data-mood="excited"><div class="option-emoji">🔥</div><span>High Energy</span></div>
+                        </div>
+                    </div>
+                    <!-- Q2 -->
+                    <div class="question-card box" id="question2">
+                        <h4 class="question-title">What's your emotional mood?</h4>
+                        <div class="options-grid">
+                            <div class="option-card box" data-value="happy" data-mood="uplifting"><div class="option-emoji">😄</div><span>Happy & Uplifted</span></div>
+                            <div class="option-card box" data-value="emotional" data-mood="deep"><div class="option-emoji">😢</div><span>Deep & Emotional</span></div>
+                            <div class="option-card box" data-value="mysterious" data-mood="thrilling"><div class="option-emoji">🤔</div><span>Mysterious & Thrilling</span></div>
+                            <div class="option-card box" data-value="romantic" data-mood="romantic"><div class="option-emoji">💕</div><span>Romantic & Dreamy</span></div>
+                        </div>
+                    </div>
+                    <!-- Q3 -->
+                    <div class="question-card box" id="question3">
+                        <h4 class="question-title">What type of content do you prefer?</h4>
+                        <div class="options-grid">
+                            <div class="option-card box" data-value="movie" data-mood="movie"><div class="option-emoji">🎬</div><span>Movies</span></div>
+                            <div class="option-card box" data-value="tv" data-mood="series"><div class="option-emoji">📺</div><span>TV Series</span></div>
+                            <div class="option-card box" data-value="both" data-mood="mixed"><div class="option-emoji">🎭</div><span>Surprise Me!</span></div>
+                        </div>
+                    </div>
+                    <!-- Q4 -->
+                    <div class="question-card box" id="question4">
+                        <h4 class="question-title">Which genre are you in the mood for?</h4>
+                        <div class="options-grid">
+                            <div class="option-card box" data-value="scifi"><div class="option-emoji">🚀</div><span>Sci-Fi</span></div>
+                            <div class="option-card box" data-value="comedy"><div class="option-emoji">😂</div><span>Comedy</span></div>
+                            <div class="option-card box" data-value="drama"><div class="option-emoji">🎭</div><span>Drama</span></div>
+                            <div class="option-card box" data-value="action"><div class="option-emoji">🔥</div><span>Action</span></div>
+                            <div class="option-card box" data-value="horror"><div class="option-emoji">👻</div><span>Horror</span></div>
+                            <div class="option-card box" data-value="romance"><div class="option-emoji">💖</div><span>Romance</span></div>
+                            <div class="option-card box" data-value="any"><div class="option-emoji">🎲</div><span>Surprise Me!</span></div>
+                        </div>
+                    </div>
+                    <!-- Q5 -->
+                    <div class="question-card box" id="question5">
+                        <h4 class="question-title">How much time do you have today?</h4>
+                        <div class="options-grid">
+                            <div class="option-card box" data-value="short"><div class="option-emoji">⏳</div><span>Quick Watch</span></div>
+                            <div class="option-card box" data-value="movie"><div class="option-emoji">🎬</div><span>Regular Movie</span></div>
+                            <div class="option-card box" data-value="binge"><div class="option-emoji">🍕</div><span>Binge Session</span></div>
+                            <div class="option-card box" data-value="flexible"><div class="option-emoji">😎</div><span>I'm Flexible</span></div>
+                        </div>
+                    </div>
+                    <!-- Q6 (shows only if TV/series selected) -->
+                    <div class="question-card box" id="question6">
+                        <h4 class="question-title">How long of a series do you prefer?</h4>
+                        <div class="options-grid">
+                            <div class="option-card box" data-value="miniseries"><div class="option-emoji">📦</div><span>Miniseries</span></div>
+                            <div class="option-card box" data-value="ongoing"><div class="option-emoji">🔄</div><span>Ongoing Series</span></div>
+                            <div class="option-card box" data-value="long"><div class="option-emoji">🏁</div><span>Long Complete Series</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-navigation mt-4 text-center">
+                    <button class="btn btn-secondary btn-lg" id="backBtn" onclick="previousQuestion()" style="display:none;"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button class="btn btn-primary btn-lg" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next <i class="fas fa-arrow-right"></i></button>
+                    <button class="btn btn-success btn-lg" id="resultsBtn" onclick="showResults()" style="display:none;">Get My Recommendations! <i class="fas fa-magic"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <main id="dashboard-page" class="page-container" aria-label="Dashboard">
+        <section class="dashboard-section py-4">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                    <h2 class="mb-0">Your Recommendations</h2>
+                    <div class="d-flex gap-2">
+                        <select id="dashboardGenreFilter" class="form-select-sm" aria-label="Filter by Genre">
+                            <option value="">All Genres</option>
+                            <option value="scifi">Sci-Fi</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="drama">Drama</option>
+                            <option value="action">Action</option>
+                            <option value="horror">Horror</option>
+                            <option value="romance">Romance</option>
+                        </select>
+                        <button class="btn btn-outline-primary btn-sm" onclick="refreshDashboard()" aria-label="Refresh Recommendations"><i class="fas fa-sync"></i> Refresh</button>
+                    </div>
+                </div>
+                <div id="dashboardError" class="alert alert-danger d-none" role="alert"></div>
+                <div class="row" id="recommendationResults"></div>
+            </div>
+        </section>
+    </main>
+    <main id="saved-page" class="page-container" aria-label="Saved List">
+        <section class="saved-section py-4">
+            <div class="container">
+                <h2 class="text-center mb-4">Your Saved List</h2>
+                <div id="savedEmpty" class="text-center text-muted">Your saved list is empty. <i class="far fa-frown"></i></div>
+                <div class="row" id="savedList"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <nav>
+                <a href="#" onclick="showPage('home')" class="footer-link">Home</a> |
+                <a href="#" onclick="showPage('quiz')" class="footer-link">Quiz</a> |
+                <a href="#" onclick="showPage('dashboard')" class="footer-link">Dashboard</a> |
+                <a href="#" onclick="showPage('saved')" class="footer-link">Saved</a>
+            </nav>
+            <p class="mt-2 mb-0">&copy; 2025 What Should I Watch?</p>
+            <div class="social-links mt-2">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title" id="movieModalLabel">Details</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="movieModalBody"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
